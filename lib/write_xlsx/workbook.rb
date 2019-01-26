@@ -1327,7 +1327,7 @@ module Writexlsx
     end
 
     def write_parts(zip)
-      parts.each do |part|
+      parts.sort.each do |part|
         zip.put_next_entry(zip_entry_for_part(part.sub(Regexp.new("#{tempdir}/?"), '')))
         zip.puts(File.read(part))
       end
